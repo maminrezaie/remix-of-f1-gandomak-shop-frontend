@@ -18,7 +18,7 @@ const Header = () => {
       <div className="container flex items-center justify-between h-full">
         {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
-          <img src="https://gandomakshop.ir/wp-content/uploads/2025/10/Final-0۷-600x338.png" alt="گندمک شاپ" className="h-12 w-auto object-contain" />
+          <img src="/logo.png" alt="گندمک شاپ" className="h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
