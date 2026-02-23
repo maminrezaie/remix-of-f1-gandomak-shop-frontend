@@ -91,7 +91,7 @@ const FeatureBanner = () => {
             style={{
               fontFamily: "'YekanBakh', sans-serif",
               fontWeight: 400,
-              fontSize: "clamp(1.7rem, 3vw, 2.5rem)",
+              fontSize: "clamp(1.3rem, 2.4vw, 1.9rem)",
               color: "#2a1a0a",
               direction: "rtl",
               textAlign: "right",
