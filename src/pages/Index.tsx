@@ -5,6 +5,7 @@ import CategoryGrid from "@/components/CategoryGrid";
 import ProductRow from "@/components/ProductRow";
 import FeatureBanner from "@/components/FeatureBanner";
 import TeaCategorySlider from "@/components/TeaCategorySlider";
+import JournalSection from "@/components/JournalSection";
 import { Leaf, Truck, Shield } from "lucide-react";
 
 const features = [
@@ -29,6 +30,9 @@ const Index = () => {
 
       {/* Product Cards — horizontal scroll row */}
       <ProductRow />
+
+      {/* Journal / Blog */}
+      <JournalSection />
 
       {/* Features */}
       <section className="bg-background">
