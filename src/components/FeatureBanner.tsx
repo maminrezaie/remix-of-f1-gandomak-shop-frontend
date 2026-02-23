@@ -98,7 +98,8 @@ const FeatureBanner = () => {
               lineHeight: 1.3,
               letterSpacing: "-0.01em",
               marginTop: 0,
-              marginBottom: "0.2rem",
+              marginBottom: "20px",
+              marginRight: "20px",
               alignSelf: "stretch",
             }}
           >
