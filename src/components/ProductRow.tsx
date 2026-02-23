@@ -42,7 +42,7 @@ const ProductRow = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "0 2rem 1.5rem",
+          padding: "0 clamp(1rem, 4vw, 2rem) 1.5rem",
           direction: "rtl",
         }}
       >
@@ -86,7 +86,7 @@ const ProductRow = () => {
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
           scrollbarWidth: "none",
-          padding: "0.5rem 2rem 1rem",
+          padding: "0.5rem clamp(1rem, 4vw, 2rem) 1rem",
         }}
         className="hide-scrollbar"
       >

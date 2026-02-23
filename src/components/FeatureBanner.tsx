@@ -134,6 +134,7 @@ const FeatureBanner = () => {
           }
           .feature-banner-grid > div:first-child {
             order: 1;
+            margin-top: 0 !important;
           }
           .feature-banner-grid > div:first-child > div {
             max-width: 360px !important;
@@ -143,6 +144,7 @@ const FeatureBanner = () => {
             order: 2;
             align-items: center !important;
             text-align: center !important;
+            padding-right: 1rem !important;
           }
         }
       `}</style>
