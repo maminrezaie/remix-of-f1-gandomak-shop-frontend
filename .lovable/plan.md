@@ -1,23 +1,14 @@
 
 
-## Add Saffron Products to the Tea Category Slider
+## Replace Header Logo
 
-The slider currently only fetches products from the "دمنوش و چای" category. We'll update it to also include saffron ("زعفران") products in the same slider.
+Replace the current local logo image with the remote Gandomak logo and increase its display size for better readability.
 
 ### Changes
 
-**File: `src/components/TeaCategorySlider.tsx`**
-
-1. Find both the tea category AND the saffron category from the categories list.
-2. Fetch products from both categories in parallel (two separate queries, or combine IDs).
-3. Merge the two product arrays and display them together in the same scrollable slider.
-4. Update the section title to reflect both categories (e.g., "دمنوش، چای و زعفران").
-
-### Technical Details
-
-- Find saffron category by matching `c.name.includes("زعفران")` or `c.slug.includes("saffron")`.
-- Use a second `useQuery` for saffron products (same pattern as the tea query).
-- Merge and deduplicate the two product arrays by `id` before rendering.
-- Both queries run in parallel since they're independent `useQuery` hooks.
-- No other files need changes.
+**`src/components/Header.tsx`**
+- Update the logo import/source from the local `@/assets/logo.png` to the remote URL `https://gandomakshop.ir/wp-content/uploads/2025/10/Final-0۷-600x338.png`
+- Remove the unused local logo import
+- Increase the `<img>` dimensions from `h-12 w-12` to approximately `h-12 w-auto` (or similar) so the wider aspect ratio of the new logo renders fully and remains readable
+- Remove the separate "گندمک" text span next to the logo, since the new logo image already contains the brand name
 
