@@ -13,7 +13,7 @@ const FeatureBanner = () => {
   return (
     <section
       className="relative"
-      style={{ background: "#faf5ec", padding: "3rem 2rem 3rem", direction: "rtl" }}
+      style={{ background: "#faf5ec", padding: "3rem 2rem 1rem", direction: "rtl" }}
     >
       {/* Hairline separator */}
       <div className="w-full h-px" style={{ background: "#e0d0b8", marginBottom: "0.75rem" }} />
