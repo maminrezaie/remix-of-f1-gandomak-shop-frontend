@@ -20,7 +20,7 @@ const FooterSection = () => (
     <div className="footer-inner">
       {/* ZONE 1 — Brand */}
       <div className="footer-brand">
-        <span className="footer-logo">گندمک</span>
+        <img src="/logo.png" alt="گندمک" className="footer-logo-img" />
         <p className="footer-about">
           گندمک با بیش از یک دهه تجربه در صنعت ادویه و دمنوش ایران، نمادی از کیفیت، اصالت و نوآوری
           است. داستان ما از مزارع خراسان آغاز می‌شود، جایی که نسل‌های متمادی با عشق و تخصص،
