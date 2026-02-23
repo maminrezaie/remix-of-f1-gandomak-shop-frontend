@@ -1,91 +1,45 @@
 
+## ReactPress / WooCommerce Integration
 
-## Ensure Mobile Responsiveness Across the Site
-
-A comprehensive audit of all components and pages, with fixes for spacing, layout, typography, and touch targets on small screens.
+Preparing the React app for deployment inside WordPress via ReactPress, ensuring proper routing, linking, and API configuration.
 
 ---
 
-### 1. Hero Section (HeroSection.tsx)
+### Changes Overview
 
-- The hero text uses `whiteSpace: "nowrap"` on the Persian heading -- this will overflow on narrow screens. Change to `whiteSpace: "normal"` below ~640px or remove it entirely and let it wrap naturally.
-- Fixed `height: "72vh"` works but `paddingBottom: "0rem"` leaves no breathing room on short mobile screens. Add a small bottom padding on mobile.
+#### 1. Switch to HashRouter
+Replace `BrowserRouter` with `HashRouter` in `src/App.tsx` to prevent 404 errors when ReactPress serves the app inside WordPress. All internal routes will use `/#/shop`, `/#/product/123`, etc.
 
-### 2. Feature Banner (FeatureBanner.tsx)
+#### 2. Hardcode API credentials in `src/lib/api.ts`
+- Keep the WooCommerce consumer key and secret hardcoded directly (as requested)
+- Add `'Content-Type': 'application/json'` to fetch headers
+- The `BASE_URL`, key, and secret remain as plain constants -- no environment variables needed
 
-- Already has a `@media (max-width: 860px)` breakpoint but the image has `marginTop: "-5rem"` which creates overlap issues on mobile. Reset the negative margin to `0` on small screens.
-- The right column has `paddingRight: "3rem"` which wastes space on mobile. Reset to `1rem` on small screens.
-- Add text centering for the description paragraph on mobile.
+#### 3. Fix all WooCommerce native links
+These external links must point to the live WordPress site and already do in most places. Confirm and keep:
+- Cart: `https://gandomakshop.ir/cart/` (Header cart icon -- already correct)
+- My Account: `https://gandomakshop.ir/my-account/` (Header login/user icons -- already correct)
+- Checkout: `https://gandomakshop.ir/checkout/` (Product page "direct buy" button -- already correct)
+- Blog: `https://gandomakshop.ir/blog/` (Header nav -- already correct)
 
-### 3. Tea Category Slider & Product Row (TeaCategorySlider.tsx, ProductRow.tsx)
+#### 4. Keep React product pages (Option A)
+The app already renders `/product/:id` with WooCommerce API data. The "add to cart" button already redirects to `https://gandomakshop.ir/?add-to-cart={id}`. No changes needed here.
 
-- Cards use `flex: "0 0 200px"` -- on very small screens (320px) this is fine for scroll but the section header padding of `0 2rem` compresses the title. Reduce to `0 1rem` on small screens.
-- Both components are functionally OK since they use horizontal scroll, but need the `hide-scrollbar` CSS utility confirmed (it exists in ProductRow's inline styles).
+#### 5. Ensure all internal links are relative
+All `<Link to="...">` components already use relative paths (`/`, `/shop`, `/about`, `/contact`, `/product/:id`). With HashRouter these become `/#/`, `/#/shop`, etc. -- no hardcoded domain needed for internal navigation.
 
-### 4. Category Grid (index.css)
-
-- Already has a `@media (max-width: 640px)` breakpoint that switches to 2 columns -- this is good.
-- The wrapper padding `3.5rem 1.5rem 3rem` is fine on mobile.
-
-### 5. Journal Section (index.css)
-
-- Already responsive with 2-col at 1024px and 1-col at 640px. Good.
-- Margin reduction from `0 2rem` to `0 1rem` at 640px already exists. Good.
-
-### 6. Footer Section (index.css)
-
-- At 640px the footer goes to 1-column but `footer-center` stays at `1fr 1fr` for link columns -- on very narrow screens (~320px) this can still feel tight. Add a breakpoint at 400px to make `footer-center` single column.
-- The footer wrapper padding `3.5rem 2rem 2rem` should reduce to `2.5rem 1rem 1.5rem` on mobile.
-
-### 7. Features Section (Index.tsx)
-
-- Uses `grid-cols-1 md:grid-cols-3` -- already responsive. Good.
-
-### 8. Header (Header.tsx)
-
-- Mobile menu already implemented with hamburger toggle. Good.
-- The header icon buttons at 42px are good touch targets.
-- Container padding from tailwind config is `1.5rem` -- fine.
-
-### 9. Product Page (Product.tsx)
-
-- Uses `grid md:grid-cols-2` which stacks on mobile. Good.
-- Image thumbnails at `w-20 h-20` are fine touch targets.
-- The full-width CTA buttons are good on mobile.
-
-### 10. Shop Page (Shop.tsx)
-
-- Uses `grid-cols-2 md:grid-cols-3 lg:grid-cols-4` -- good.
-- Category filter pills use `flex-wrap` -- good.
-
-### 11. About and Contact Pages
-
-- Both use responsive Tailwind classes (`sm:grid-cols-2`, `md:grid-cols-3`, etc.). Good.
-- Contact hero uses `py-16 md:py-24` -- responsive. Good.
+#### 6. Remove unnecessary environment variable references
+The instructions mention `VITE_WC_KEY`, `VITE_WC_SECRET`, `VITE_WC_BASE_URL` but since the user explicitly wants hardcoded values, we keep the current approach and simply clean up the TODO comment in `api.ts`.
 
 ---
 
 ### Technical Details -- Files to Edit
 
-**`src/components/HeroSection.tsx`**
-- Remove `whiteSpace: "nowrap"` from the h1 style, or wrap it in a responsive check
-- Add responsive padding-bottom
+**`src/App.tsx`**
+- Change `import { BrowserRouter }` to `import { HashRouter }`
+- Replace `<BrowserRouter>` / `</BrowserRouter>` with `<HashRouter>` / `</HashRouter>`
 
-**`src/components/FeatureBanner.tsx`**
-- Add mobile overrides in the existing inline `<style>` block: reset `marginTop` on the image container, reduce `paddingRight` on the text column
-
-**`src/index.css`**
-- Add `@media (max-width: 400px)` for `.footer-center` to go single column
-- Add mobile padding reduction for `.footer-wrapper` at 640px
-- Add mobile override for `.footer-logo-img` to center it
-- Add responsive styles for `.feature-banner-grid` text column on narrow screens
-
-**`src/components/TeaCategorySlider.tsx`**
-- Reduce section header padding on mobile (from `0 2rem` to `0 1rem` at small widths) via responsive inline style or a CSS class
-
-**`src/components/ProductRow.tsx`**
-- Same header padding fix as TeaCategorySlider
-
-**`src/pages/Index.tsx`**
-- The features section `container py-16` is fine, no changes needed
-
+**`src/lib/api.ts`**
+- Add `'Content-Type': 'application/json'` to `getAuthHeaders()` return value
+- Remove the TODO comment (credentials are intentionally hardcoded)
+- No other changes -- BASE_URL, key, secret, and `addToCart` function are already correct
