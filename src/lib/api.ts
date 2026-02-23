@@ -3,11 +3,10 @@ import { WooProduct, WooCategory } from "@/types/product";
 const BASE_URL = "https://gandomakshop.ir/wp-json/wc/v3";
 
 const getAuthHeaders = (): HeadersInit => {
-  // TODO: Replace with env vars before deployment
   const key = "ck_7c79c45802973e75f070526a3791e6bc6ca12537";
   const secret = "cs_f749aeb2aa0b7a6e90b2b529dd5344655d203da5";
   const encoded = btoa(`${key}:${secret}`);
-  return { Authorization: `Basic ${encoded}` };
+  return { Authorization: `Basic ${encoded}`, "Content-Type": "application/json" };
 };
 
 async function fetchWoo<T>(endpoint: string, params?: Record<string, string>): Promise<T> {
