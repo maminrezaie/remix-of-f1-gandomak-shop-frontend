@@ -6,6 +6,7 @@ import ProductRow from "@/components/ProductRow";
 import FeatureBanner from "@/components/FeatureBanner";
 import TeaCategorySlider from "@/components/TeaCategorySlider";
 import JournalSection from "@/components/JournalSection";
+import FooterSection from "@/components/FooterSection";
 import { Leaf, Truck, Shield } from "lucide-react";
 
 const features = [
@@ -55,6 +56,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <FooterSection />
 
       <FloatingChatButton />
     </Layout>
