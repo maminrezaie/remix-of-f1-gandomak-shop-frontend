@@ -43,7 +43,7 @@ const FeatureBanner = () => {
         }}
       >
         {/* LEFT column — image */}
-        <div className="flex items-start justify-start" style={{ overflow: "visible", marginTop: "-5rem" }}>
+        <div className="flex items-start justify-start" style={{ overflow: "visible", marginTop: "-5rem", marginLeft: "50px" }}>
           <div style={{ width: "100%", maxWidth: 400, background: "#faf5ec", lineHeight: 0 }}>
             <img
               src={featuredImg}
