@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Search, ShoppingCart, User, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "فروشگاه", path: "/shop" },
@@ -17,12 +16,9 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border shadow-nav h-[68px]">
       <div className="container flex items-center justify-between h-full">
-        {/* Wordmark + Logo */}
-        <Link to="/" className="flex items-center gap-3 shrink-0">
-          <img src={logo} alt="گندمک شاپ" className="h-12 w-12 object-contain" />
-          <span className="font-serif text-primary hidden sm:block" style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '0.03em' }}>
-            گندمک
-          </span>
+        {/* Logo */}
+        <Link to="/" className="flex items-center shrink-0">
+          <img src="https://gandomakshop.ir/wp-content/uploads/2025/10/Final-0۷-600x338.png" alt="گندمک شاپ" className="h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
