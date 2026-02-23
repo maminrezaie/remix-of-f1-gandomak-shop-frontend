@@ -38,7 +38,7 @@ const HeroSection = () => {
       {/* Centered text block */}
       <div
         className="relative z-30 flex flex-col items-center justify-end h-full"
-        style={{ minHeight: "72vh", paddingBottom: "0rem" }}
+        style={{ minHeight: "72vh", paddingBottom: "1.5rem" }}
       >
         <div
           className="text-center animate-fade-in-up"
@@ -69,7 +69,7 @@ const HeroSection = () => {
               direction: "rtl",
               letterSpacing: "-0.01em",
               lineHeight: 1.3,
-              whiteSpace: "nowrap",
+              whiteSpace: "normal",
               margin: 0,
             }}
           >
