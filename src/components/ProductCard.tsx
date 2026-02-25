@@ -24,7 +24,7 @@ const ProductCard = ({ product }: Props) => {
       </Link>
       <div className="p-4 space-y-3">
         <Link to={`/product/${product.id}`}>
-          <h3 className="font-semibold text-foreground line-clamp-2 leading-relaxed hover:text-primary transition-colors duration-200">
+          <h3 className="text-foreground line-clamp-2 leading-relaxed hover:text-primary transition-colors duration-200" style={{ fontWeight: 600, fontFamily: "'Vazirmatn', sans-serif" }}>
             {product.name}
           </h3>
         </Link>
@@ -38,7 +38,7 @@ const ProductCard = ({ product }: Props) => {
                 {formatPrice(product.regular_price)}
               </span>
             )}
-            <span className="font-bold text-primary text-lg">
+            <span className="text-primary text-lg" style={{ fontWeight: 700, fontFamily: "'Vazirmatn', sans-serif" }}>
               {formatPrice(product.price)}
             </span>
           </div>
