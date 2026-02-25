@@ -2,19 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide WordPress/Flatsome theme elements inside ReactPress */
-#wpadminbar,
-.site-header,
-header.header,
-.flatsome-header,
-#masthead,
-.main-nav,
-nav.primary-navigation {
-  display: none !important;
-}
-
 #root {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 @layer base {
