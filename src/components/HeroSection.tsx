@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import heroSpices from "@/assets/hero-spices.jpg";
-import heroCinnamon from "@/assets/hero-cinnamon.jpg";
-import heroBottles from "@/assets/hero-bottles.jpg";
-
-const images = [heroSpices, heroCinnamon, heroBottles];
+const images = [
+  "https://gandomakshop.ir/wp-content/uploads/2026/02/hero-spices-cEVrjBtw.jpg",
+  "https://gandomakshop.ir/wp-content/uploads/2026/02/hero-cinnamon-DbntteBr.jpg",
+  "https://gandomakshop.ir/wp-content/uploads/2026/02/hero-bottles-BHUSsZNl.jpg",
+];
 
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -26,7 +26,7 @@ const HeroSection = () => {
             alt="ادویه‌جات"
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              objectPosition: src === heroBottles ? "center 70%" : "center top",
+              objectPosition: src.includes("hero-bottles") ? "center 70%" : "center top",
               opacity: activeIndex === i ? 1 : 0,
               transition: "opacity 1.5s ease-in-out",
             }}

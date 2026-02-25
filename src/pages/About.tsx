@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { Leaf, Heart, Award, Truck, Shield, Users, MapPin, Star } from "lucide-react";
-import saffronField from "@/assets/saffron-field.jpg";
+const saffronField = "https://gandomakshop.ir/wp-content/uploads/2026/02/saffron-field-BanRQDTb.jpg";
 
 const values = [
   { icon: Leaf, title: "طبیعی و ارگانیک", desc: "تمامی محصولات ما بدون مواد شیمیایی و افزودنی مصنوعی، مستقیماً از طبیعت ایران تهیه می‌شوند." },

@@ -1,4 +1,4 @@
-import featuredImg from "@/assets/featured-tea.png";
+const featuredImg = "https://gandomakshop.ir/wp-content/uploads/2026/02/featured-tea-D2iiOWjT.png";
 
 const TeacupIcon = () => (
   <svg viewBox="0 0 24 24" className="w-[52px] h-[52px] stroke-current fill-none" strokeWidth={1.3}>
