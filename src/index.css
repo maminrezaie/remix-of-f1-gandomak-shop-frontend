@@ -2,10 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── ReactPress / Flatsome overrides ── */
+
+#root, #root * {
+  font-family: 'Vazirmatn', 'Estedad', 'YekanBakh', sans-serif !important;
+}
+
+#root h1, #root h2, #root h3, #root h4, #root h5 {
+  font-weight: 700 !important;
+}
+
+#root p, #root span, #root div {
+  font-weight: 400 !important;
+}
+
 #root {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  overflow-x: hidden;
 }
 
 @layer base {
