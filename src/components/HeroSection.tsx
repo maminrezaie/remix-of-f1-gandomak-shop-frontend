@@ -62,7 +62,7 @@ const HeroSection = () => {
           </span>
           <h1
             style={{
-              fontFamily: "'YekanBakh', sans-serif",
+              fontFamily: "'Estedad', sans-serif",
               fontWeight: 400,
               fontSize: "clamp(1.3rem, 2.4vw, 1.9rem)",
               color: "#2a1a0a",
