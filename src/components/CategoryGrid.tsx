@@ -1,9 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { fetchCategories } from "@/lib/api";
-import nutsImg from "@/assets/nuts.png";
-import catSpicesImg from "@/assets/cat-spices.jpg";
-import catGiftImg from "@/assets/cat-gift.jpg";
 
 /*
  * Art-directed category grid — "Broken Symmetry" layout
@@ -13,10 +10,10 @@ import catGiftImg from "@/assets/cat-gift.jpg";
 
 /* Image overrides by category name */
 const IMAGE_OVERRIDES: Record<string, string> = {
-  "مغزها": nutsImg,
+  "مغزها": "https://gandomakshop.ir/wp-content/uploads/2026/02/nuts-r-cZBtQp.png",
   "زعفران": "https://gandomakshop.ir/wp-content/uploads/2026/02/decorNegin.jpg",
-  "ادویه": catSpicesImg,
-  "پک هدیه": catGiftImg
+  "ادویه": "https://gandomakshop.ir/wp-content/uploads/2026/02/cat-spices-CEoIQ4aw.jpg",
+  "پک هدیه": "https://gandomakshop.ir/wp-content/uploads/2026/02/cat-gift-BrIJ2BuC.jpg"
 };
 
 /* Ordered list of override URLs to assign to API categories that aren't in IMAGE_OVERRIDES */
