@@ -48,7 +48,7 @@ const ProductRow = () => {
       >
         <h2
           style={{
-            fontFamily: "'Vazirmatn', 'YekanBakh', sans-serif",
+            fontFamily: "'Vazirmatn', 'Estedad', sans-serif",
             fontWeight: 900,
             fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
             color: "#2a1a0a",
@@ -192,7 +192,7 @@ const ProductRow = () => {
                   {/* Name */}
                   <div
                     style={{
-                      fontFamily: "'Vazirmatn', 'YekanBakh', sans-serif",
+                      fontFamily: "'Vazirmatn', 'Estedad', sans-serif",
                       fontWeight: 700,
                       fontSize: "0.9rem",
                       color: "#2a1a0a",
@@ -315,7 +315,7 @@ const ProductRow = () => {
                       background: "#faf5ec",
                       border: "1px solid #e8d8c0",
                       borderRadius: 8,
-                      fontFamily: "'Vazirmatn', 'YekanBakh', sans-serif",
+                      fontFamily: "'Vazirmatn', 'Estedad', sans-serif",
                       fontSize: "0.8rem",
                       fontWeight: 500,
                       color: "#3a2a1a",
