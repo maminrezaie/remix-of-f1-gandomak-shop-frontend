@@ -46,8 +46,8 @@ const HeroSection = () => {
         >
           <span
             style={{
-              fontFamily: "'Dancing Script', cursive",
-              fontWeight: 700,
+              fontFamily: "'Great Vibes', cursive",
+              fontWeight: 400,
               fontSize: "clamp(1.4rem, 2.8vw, 2rem)",
               color: "#5a3e2e",
               opacity: 0.82,
