@@ -12,9 +12,6 @@
   font-weight: 700 !important;
 }
 
-#root p, #root span, #root div {
-  font-weight: 400 !important;
-}
 
 #root {
   min-height: 100vh;
