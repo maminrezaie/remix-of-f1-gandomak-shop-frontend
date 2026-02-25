@@ -141,8 +141,8 @@
 }
 
 .category-grid-tagline {
-  font-family: 'Dancing Script', cursive;
-  font-weight: 700;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
   font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   color: #5a3e2e;
   opacity: 0.85;

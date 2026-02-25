@@ -22,7 +22,8 @@ const FeatureBanner = () => {
       <span
         className="font-dancing block text-center"
         style={{
-          fontWeight: 700,
+          fontWeight: 400,
+          fontFamily: "'Great Vibes', cursive",
           fontSize: "clamp(1.1rem, 2vw, 1.45rem)",
           color: "#cc2222",
           lineHeight: 1.4,
