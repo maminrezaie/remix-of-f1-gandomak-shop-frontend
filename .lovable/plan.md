@@ -1,48 +1,31 @@
 
 
-## Plan: Hardcode Typography for ReactPress Compatibility
+## Plan: Update English Phrase Fonts
 
-### Problem
-The CSS rule `#root p, #root span, #root div { font-weight: 400 !important }` in `index.css` is overriding inline `fontWeight` values throughout the app. For example, product names set to `fontWeight: 700` inline get forced to 400. Additionally, `ProductCard.tsx` uses Tailwind classes like `font-semibold` and `font-bold` which Flatsome can override.
+### What's changing
+The English decorative phrases ("a delightful journey" and "favorite collection") currently use **Dancing Script** which looks different from the reference site (mostafavisaffron.com). The reference uses a more elegant, flowing calligraphy script — **Great Vibes** from Google Fonts is the closest match.
 
 ### Changes
 
-**1. `src/index.css` — Remove the aggressive font-weight rule (lines 15-17)**
+**1. `index.html` — Add Great Vibes font from Google CDN**
 
-Remove:
-```css
-#root p, #root span, #root div {
-  font-weight: 400 !important;
-}
-```
+Add `Great+Vibes` to the existing Google Fonts `<link>` tag.
 
-Keep the font-family override (it protects against Flatsome):
-```css
-#root, #root * {
-  font-family: 'Vazirmatn', 'Estedad', 'YekanBakh', sans-serif !important;
-}
-```
+**2. `src/components/HeroSection.tsx` — Update font on "a delightful journey"**
 
-Keep the heading weight rule:
-```css
-#root h1, #root h2, #root h3, #root h4, #root h5 {
-  font-weight: 700 !important;
-}
-```
+Change `fontFamily` from `'Dancing Script', cursive` to `'Great Vibes', cursive` on the `<span>` at line 49. Adjust weight to 400 (Great Vibes only has 400).
 
-**2. `src/components/ProductCard.tsx` — Convert Tailwind font classes to inline styles**
+**3. `src/components/FeatureBanner.tsx` — Update font on "favorite collection"**
 
-The only component using Tailwind classes for typography instead of inline styles. Convert:
-- `font-semibold` on product name `<h3>` to `style={{ fontWeight: 600 }}`
-- `font-bold` on price `<span>` to `style={{ fontWeight: 700 }}`
-- Add explicit `fontFamily` to key text elements
+Same font change on the `<span>` around line 22-25. Change family to `'Great Vibes', cursive`, weight to 400.
 
-**3. No changes needed for other components**
+**4. `src/index.css` — Update `.category-grid-tagline`**
 
-`ProductRow.tsx`, `TeaCategorySlider.tsx`, `FeatureBanner.tsx`, `HeroSection.tsx`, `CategoryGrid.tsx`, `JournalSection.tsx`, and `FooterSection.tsx` already use inline `style={{ fontFamily, fontWeight }}` throughout — these will render correctly once the aggressive CSS override is removed.
+This class also references `'Dancing Script'` — update to `'Great Vibes', cursive` with weight 400.
 
-### Summary
-- 2 files modified
-- Core fix: remove the `font-weight: 400 !important` rule that fights with inline styles
-- Secondary fix: convert ProductCard from Tailwind classes to inline styles for Flatsome resilience
+### Files modified
+- `index.html` (1 line — font link)
+- `src/components/HeroSection.tsx` (2 lines — fontFamily, fontWeight)
+- `src/components/FeatureBanner.tsx` (2 lines — fontFamily, fontWeight)
+- `src/index.css` (2 lines — font-family, font-weight in `.category-grid-tagline`)
 
