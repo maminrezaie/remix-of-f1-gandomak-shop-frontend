@@ -37,7 +37,7 @@ const FeatureBanner = () => {
       <div
         className="feature-banner-grid mx-auto grid items-start gap-8"
         style={{
-          maxWidth: 1400,
+          maxWidth: 1100,
           gridTemplateColumns: "55% 45%",
           direction: "ltr",
           minHeight: 320,
