@@ -3,8 +3,9 @@ import { WooProduct, WooCategory } from "@/types/product";
 const BASE_URL = "https://gandomakshop.ir/wp-json/wc/v3";
 
 const getAuthHeaders = (): HeadersInit => {
-  const key = "ck_7c79c45802973e75f070526a3791e6bc6ca12537";
-  const secret = "cs_f749aeb2aa0b7a6e90b2b529dd5344655d203da5";
+  const key = import.meta.env.VITE_WC_KEY || "";
+  const secret = import.meta.env.VITE_WC_SECRET || "";
+  if (!key || !secret) return { "Content-Type": "application/json" };
   const encoded = btoa(`${key}:${secret}`);
   return { Authorization: `Basic ${encoded}`, "Content-Type": "application/json" };
 };
@@ -26,8 +27,10 @@ async function fetchWoo<T>(endpoint: string, params?: Record<string, string>): P
   return res.json();
 }
 
+const PRODUCT_FIELDS = "id,name,price,regular_price,sale_price,images,slug,short_description,categories,on_sale,stock_status";
+
 export async function fetchProducts(params?: { category?: string; per_page?: string; page?: string }): Promise<WooProduct[]> {
-  const queryParams: Record<string, string> = { per_page: "12", ...params };
+  const queryParams: Record<string, string> = { per_page: "12", _fields: PRODUCT_FIELDS, ...params };
   return fetchWoo<WooProduct[]>("/products", queryParams);
 }
 
