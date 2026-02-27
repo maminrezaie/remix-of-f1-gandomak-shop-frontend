@@ -1,22 +1,29 @@
-## Plan: Apply 1100px max-width globally
 
-The Tailwind `container` class is the main layout constraint used across pages (Index, About, Contact, Shop, etc.). Currently it caps at `1400px`. Changing it to `1100px` in the Tailwind config will propagate to all sections using `className="container"`.
 
-Additionally, the `.category-grid-wrapper` in CSS uses `900px` so change it to 1100px.  The `FeatureBanner` and `.footer-inner` are already at 1100px.
+## Plan: Apply Technical Requirements for WordPress/ReactPress Integration
 
-### Changes
+### Changes needed (4 items already compliant: HashRouter, base path, no navbar, RTL, WooCommerce handoff)
 
-**1. `tailwind.config.ts` — Change container max-width from 1400px to 1100px**
+**1. `src/index.css` — Add @import for Google Fonts at top of file**
+Add `@import url(...)` for Vazirmatn, Estedad, and Great Vibes before the `@tailwind` directives. This ensures fonts load even when WordPress rewrites the `<head>`.
 
-- Line 12: `"2xl": "1400px"` → `"2xl": "1100px"`
+**2. `src/lib/api.ts` — Use environment variables for WooCommerce credentials**
+Replace hardcoded `ck_...` / `cs_...` with `import.meta.env.VITE_WC_KEY` and `import.meta.env.VITE_WC_SECRET`. Add `_fields` parameter to `fetchProducts` for performance.
 
-**2. `src/App.css` — Change `#root` max-width from 1280px to 1100px**
+**3. `src/lib/api.ts` — Add `_fields` optimization to product fetches**
+Default `_fields=id,name,price,regular_price,sale_price,images,slug,short_description,categories,on_sale,stock_status` to reduce payload size.
 
-- Line 2: `max-width: 1280px` → `max-width: 1100px`
-
-This single Tailwind config change covers all pages and sections that use the `container` class (Index features section, Header, Footer, About, Contact, Shop, etc.).
+**4. CSS export for WordPress `style.css`**
+Provide a complete CSS block in chat (not in code) covering:
+- Font imports
+- `#root` and `.reactpress-container` overrides (full-width, padding reset, background match)
+- Typography mirroring (Vazirmatn, Estedad, font weights)
+- Hero fade gradient matching `hsl(37, 54%, 95%)`
 
 ### Files modified
+- `src/index.css` (add 3 @import lines at top)
+- `src/lib/api.ts` (env vars + _fields param)
 
-- `tailwind.config.ts` (1 line)
-- `src/App.css` (1 line)
+### CSS export (delivered in chat, not in codebase)
+Full WordPress CSS snippet will be provided after implementation for pasting into Appearance → Customize → Additional CSS.
+
