@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { BASE_PATH } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProduct, formatPrice, addToCart } from "@/lib/api";
 import Layout from "@/components/Layout";
@@ -47,7 +48,7 @@ const Product = () => {
     );
   }
 
-  const images = product.images?.length ? product.images : [{ src: "/placeholder.svg", alt: product.name, id: 0 }];
+  const images = product.images?.length ? product.images : [{ src: `${BASE_PATH}placeholder.svg`, alt: product.name, id: 0 }];
 
   return (
     <Layout>

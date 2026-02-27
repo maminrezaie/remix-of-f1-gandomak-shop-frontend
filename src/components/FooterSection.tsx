@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Linkedin, Instagram } from "lucide-react";
+import { BASE_PATH } from "@/lib/constants";
 
 const linkColumns = [
   {
@@ -20,7 +21,7 @@ const FooterSection = () => (
     <div className="footer-inner">
       {/* ZONE 1 — Brand */}
       <div className="footer-brand">
-        <img src="/logo.png" alt="گندمک" className="footer-logo-img" />
+        <img src={`${BASE_PATH}logo.png`} alt="گندمک" className="footer-logo-img" />
         <p className="footer-about">
           گندمک با بیش از یک دهه تجربه در صنعت ادویه و دمنوش ایران، نمادی از کیفیت، اصالت و نوآوری
           است. داستان ما از مزارع خراسان آغاز می‌شود، جایی که نسل‌های متمادی با عشق و تخصص،
