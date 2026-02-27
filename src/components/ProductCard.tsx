@@ -1,4 +1,5 @@
 import { WooProduct } from "@/types/product";
+import { BASE_PATH } from "@/lib/constants";
 import { formatPrice, addToCart } from "@/lib/api";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const ProductCard = ({ product }: Props) => {
-  const image = product.images?.[0]?.src || "/placeholder.svg";
+  const image = product.images?.[0]?.src || `${BASE_PATH}placeholder.svg`;
 
   return (
     <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 cursor-pointer">

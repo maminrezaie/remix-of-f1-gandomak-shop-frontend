@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BASE_PATH } from "@/lib/constants";
 import { Search, ShoppingCart, User, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -18,7 +19,7 @@ const Header = () => {
       <div className="container flex items-center justify-between h-full">
         {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
-          <img src="/logo.png" alt="گندمک شاپ" className="h-12 w-auto object-contain" />
+          <img src={`${BASE_PATH}logo.png`} alt="گندمک شاپ" className="h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
