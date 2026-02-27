@@ -1,31 +1,22 @@
+## Plan: Apply 1100px max-width globally
 
+The Tailwind `container` class is the main layout constraint used across pages (Index, About, Contact, Shop, etc.). Currently it caps at `1400px`. Changing it to `1100px` in the Tailwind config will propagate to all sections using `className="container"`.
 
-## Plan: Update English Phrase Fonts
-
-### What's changing
-The English decorative phrases ("a delightful journey" and "favorite collection") currently use **Dancing Script** which looks different from the reference site (mostafavisaffron.com). The reference uses a more elegant, flowing calligraphy script — **Great Vibes** from Google Fonts is the closest match.
+Additionally, the `.category-grid-wrapper` in CSS uses `900px` so change it to 1100px.  The `FeatureBanner` and `.footer-inner` are already at 1100px.
 
 ### Changes
 
-**1. `index.html` — Add Great Vibes font from Google CDN**
+**1. `tailwind.config.ts` — Change container max-width from 1400px to 1100px**
 
-Add `Great+Vibes` to the existing Google Fonts `<link>` tag.
+- Line 12: `"2xl": "1400px"` → `"2xl": "1100px"`
 
-**2. `src/components/HeroSection.tsx` — Update font on "a delightful journey"**
+**2. `src/App.css` — Change `#root` max-width from 1280px to 1100px**
 
-Change `fontFamily` from `'Dancing Script', cursive` to `'Great Vibes', cursive` on the `<span>` at line 49. Adjust weight to 400 (Great Vibes only has 400).
+- Line 2: `max-width: 1280px` → `max-width: 1100px`
 
-**3. `src/components/FeatureBanner.tsx` — Update font on "favorite collection"**
-
-Same font change on the `<span>` around line 22-25. Change family to `'Great Vibes', cursive`, weight to 400.
-
-**4. `src/index.css` — Update `.category-grid-tagline`**
-
-This class also references `'Dancing Script'` — update to `'Great Vibes', cursive` with weight 400.
+This single Tailwind config change covers all pages and sections that use the `container` class (Index features section, Header, Footer, About, Contact, Shop, etc.).
 
 ### Files modified
-- `index.html` (1 line — font link)
-- `src/components/HeroSection.tsx` (2 lines — fontFamily, fontWeight)
-- `src/components/FeatureBanner.tsx` (2 lines — fontFamily, fontWeight)
-- `src/index.css` (2 lines — font-family, font-weight in `.category-grid-tagline`)
 
+- `tailwind.config.ts` (1 line)
+- `src/App.css` (1 line)
