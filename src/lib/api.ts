@@ -48,6 +48,28 @@ export function formatPrice(price: string): string {
   return num.toLocaleString("fa-IR") + " تومان";
 }
 
-export function addToCart(productId: number): void {
-  window.location.href = `https://gandomakshop.ir/?add-to-cart=${productId}`;
+export async function addToCart(productId: number): Promise<void> {
+  try {
+    const formData = new FormData();
+    formData.append("product_id", String(productId));
+    formData.append("quantity", "1");
+
+    const res = await fetch("https://gandomakshop.ir/?wc-ajax=add_to_cart", {
+      method: "POST",
+      body: formData,
+      credentials: "include",
+    });
+
+    if (!res.ok) throw new Error("Failed");
+
+    const { toast } = await import("sonner");
+    toast.success("محصول به سبد خرید اضافه شد", {
+      action: {
+        label: "مشاهده سبد",
+        onClick: () => { window.location.href = "https://gandomakshop.ir/cart/"; },
+      },
+    });
+  } catch {
+    window.location.href = `https://gandomakshop.ir/cart/?add-to-cart=${productId}`;
+  }
 }

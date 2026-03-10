@@ -109,7 +109,7 @@ const Product = () => {
             </div>
 
             <button
-              onClick={() => addToCart(product.id)}
+              onClick={async () => await addToCart(product.id)}
               className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:bg-primary/90 transition-colors shadow-lg"
             >
               <ShoppingCart className="w-5 h-5" />
