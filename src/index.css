@@ -9,7 +9,13 @@
 /* ── ReactPress / Flatsome overrides ── */
 
 #root, #root * {
-  font-family: 'Vazirmatn', 'Estedad', 'YekanBakh', sans-serif !important;
+  font-family: 'Great Vibes', 'Vazirmatn', 'Estedad', 'YekanBakh', cursive, sans-serif !important;
+}
+
+/* Great Vibes only applies to Latin characters via unicode-range */
+@font-face {
+  font-family: 'Great Vibes';
+  unicode-range: U+0041-005A, U+0061-007A, U+0021-0040, U+005B-0060, U+007B-007E;
 }
 
 #root h1, #root h2, #root h3, #root h4, #root h5 {
