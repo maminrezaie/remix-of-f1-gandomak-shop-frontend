@@ -1,36 +1,29 @@
 
 
-## Plan: Fix asset references for WordPress base path
+## Plan: Fix Add-to-Cart to stay on page
 
-### Problem
-The `base` path in `vite.config.ts` is already set correctly. However, Vite's `base` only applies to **build-time** assets (JS/CSS bundles, imported images). Runtime string references like `src="/logo.png"` resolve against the WordPress domain root (`/logo.png` → `gandomakshop.ir/logo.png`), not the React app's dist folder.
+### Approach
+Replace `window.location.href` redirect with a `fetch` call to WooCommerce's AJAX add-to-cart endpoint. This adds the product without navigating away. Show a success toast with a link to the cart page.
 
-### Regarding `.env`
-Lovable does not support `.env` files. The `VITE_WC_KEY` and `VITE_WC_SECRET` environment variables set in `api.ts` will need to be configured through Lovable's secrets management or hardcoded for now. The base path in `vite.config.ts` is already correct.
+If the AJAX call fails (e.g., CORS), fall back to redirecting to the cart page instead of the homepage.
 
 ### Changes
 
-**1. Create a base path constant — `src/lib/constants.ts`**
-```ts
-export const BASE_PATH = '/wp-content/reactpress/apps/gandomak-storefront/dist/';
-```
+**1. `src/lib/api.ts` — Rewrite `addToCart` to use fetch + toast fallback**
+- Use `fetch("https://gandomakshop.ir/?wc-ajax=add_to_cart", { method: "POST", body: FormData with product_id })` with `credentials: "include"` for cookie-based sessions
+- On success: show a sonner toast with "محصول به سبد خرید اضافه شد" and a "مشاهده سبد" link to `https://gandomakshop.ir/cart/`
+- On failure: fall back to `window.location.href = "https://gandomakshop.ir/cart/?add-to-cart=${productId}"`
 
-**2. `src/components/Header.tsx` — Fix logo path**
-Change `src="/logo.png"` → `src={\`${BASE_PATH}logo.png\`}`
+**2. `src/components/ProductCard.tsx` — Update `addToCart` call to be async**
+- Make the onClick handler async since `addToCart` now returns a Promise
 
-**3. `src/components/FooterSection.tsx` — Fix logo path**
-Change `src="/logo.png"` → `src={\`${BASE_PATH}logo.png\`}`
+**3. `src/components/TeaCategorySlider.tsx` — Same async update for its add-to-cart button**
 
-**4. `src/components/ProductCard.tsx` — Fix placeholder path**
-Change `"/placeholder.svg"` → `` `${BASE_PATH}placeholder.svg` ``
-
-**5. `src/pages/Product.tsx` — Fix placeholder path**
-Change `"/placeholder.svg"` → `` `${BASE_PATH}placeholder.svg` ``
+**4. `src/pages/Product.tsx` — Same async update for product page add-to-cart button**
 
 ### Files modified
-- `src/lib/constants.ts` (new)
-- `src/components/Header.tsx`
-- `src/components/FooterSection.tsx`
+- `src/lib/api.ts`
 - `src/components/ProductCard.tsx`
+- `src/components/TeaCategorySlider.tsx`
 - `src/pages/Product.tsx`
 
