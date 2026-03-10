@@ -44,9 +44,9 @@ const ProductCard = ({ product }: Props) => {
             </span>
           </div>
           <button
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault();
-              addToCart(product.id);
+              await addToCart(product.id);
             }}
             className="p-2.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 shadow-sm"
             aria-label="افزودن به سبد خرید"

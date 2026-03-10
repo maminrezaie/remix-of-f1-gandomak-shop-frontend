@@ -288,10 +288,10 @@ const TeaCategorySlider = () => {
                   {/* Add to cart */}
                   <button
                 type="button"
-                onClick={(e) => {
+                onClick={async (e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  addToCart(p.id);
+                  await addToCart(p.id);
                 }}
                 style={{
                   width: "100%",
